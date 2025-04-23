@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+<div class="dashboard-container">
+    <h1>Library Management System</h1>
+
+    <div class="action-forms">
+        <!-- Register User Form -->
+        <form id="register-user-form" class="form-box" th:object="${user}" th:action="@{/register-user}" method="POST">
+            <h2 class="form-title">Register New User</h2>
+
+            <div class="form-group">
+                <label for="username">Full Name</label>
+                <input type="text" id="username" name="username" th:field="*{name}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" th:field="*{email}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" th:field="*{password}" required>
+            </div>
+
+<!--            <div class="form-group">-->
+<!--                <label for="role">User Role</label>-->
+<!--                <select id="role" name="role" required>-->
+<!--                    <option value="">Select role</option>-->
+<!--                    <option value="student">Student</option>-->
+<!--                    <option value="teacher">Teacher</option>-->
+<!--                    <option value="librarian">Librarian</option>-->
+<!--                </select>-->
+<!--            </div>-->
+
+            <button type="submit" class="submit-btn">Register User</button>
+        </form>
+
+        <!-- Add Book Form -->
+        <form id="add-book-form" class="form-box" th:action="@{/add-book}" th:object="${book}" method="POST">
+            <h2 class="form-title">Add New Book</h2>
+
+            <div class="form-group">
+                <label for="title">Book Title</label>
+                <input type="text" id="title" name="title" th:field="*{title}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author" th:field="*{author}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="isbn">ISBN</label>
+                <input type="text" id="isbn" name="isbn" th:field="*{isbn}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" th:field="*{category}" required>
+                    <option value="">Select category</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-Fiction</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" name="quantity" min="1" th:field="*{copies}" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Add Book</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <div class="nav-buttons">
+        <a href="/users/list" class="nav-btn users-btn">See Users</a>
+        <a href="/books/list" class="nav-btn books-btn">See Books</a>
+    </div>
+
+</div>
+</body>
+</html>
